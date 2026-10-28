@@ -1,38 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Quiosco Food
 
-## Getting Started
+Food kiosk ordering web app. Customers browse the menu by category, add products to their order, review the summary and place it; an admin view lists incoming orders and marks them as completed.
 
-First, run the development server:
+## Features
+
+- Menu grouped by category with product modal and quantity selector
+- Order summary with live total and customer name
+- Orders stored in MySQL through Prisma (order items saved as JSON)
+- Admin panel that refreshes orders with SWR and marks them as ready
+- Toast notifications and responsive layout with Tailwind CSS
+
+## Tech stack
+
+Next.js 13 · React 18 · Prisma 5 · MySQL · Tailwind CSS · SWR · Axios
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/luisRodriguez21/quiosco-food.git
+cd quiosco-food
+npm install
+
+# .env
+# DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/quiosco"
+
+npx prisma migrate dev   # create tables
+npx prisma db seed       # load categories and products
+npm run dev              # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The admin view is available at `/admin`.
